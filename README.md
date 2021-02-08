@@ -10,4 +10,4 @@ Progress can be checked in [here](https://www.notion.so/Master-Thesis-3b9805de28
 
 ## Mini works 
 In **Advanced Nonparametric Statistics and Smoothing** course in KU LEUVEN, I wrote a report based on the paper, *"Efficient and robust density estimation using
-Bernstein type polynomials"* written by Zhong Guan [paper](https://www.tandfonline.com/doi/pdf/10.1080/10485252.2016.1163349?casa_token=w7prfH_I458AAAAA:cuBH-aRFj5lmRSzO-l9tYefdv9dgQ6Z1vaWOL_kR9qJCUbgm3pCpATr-RhfdFS-E0EIqjr_VWdM-IqQ). You can find the report in the repository. 
+Bernstein type polynomials"* written by Zhong Guan [paper](https://www.tandfonline.com/doi/pdf/10.1080/10485252.2016.1163349?casa_token=w7prfH_I458AAAAA:cuBH-aRFj5lmRSzO-l9tYefdv9dgQ6Z1vaWOL_kR9qJCUbgm3pCpATr-RhfdFS-E0EIqjr_VWdM-IqQ). You can find the report in the file, *'nonparametric_research_paper'*. 
