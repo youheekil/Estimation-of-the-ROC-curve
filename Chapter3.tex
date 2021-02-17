@@ -1,0 +1,217 @@
+
+% Chapter 3
+
+\chapter{Methodology} % Main chapter title
+
+\label{Chapter3} % For referencing the chapter elsewhere, use \ref{Chapter1}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Bernstein Polynomials}
+
+\quad \par Non-parametric approach is getting more attention, in fact, it is very generically applicable and undoubtedly a useful tool for estimation of ROC curve. The first non-parametric ROC curves was introduced by \cite{zou1997smooth} based on kernel density methods. Kernel estimation of density function is given by
+
+\begin{equation}
+    \hat{f}_n(x)=  \frac{1}{nh} \displaystyle\sum_{i=1}^{n} K\left(\frac{x-X_i}{h}\right)
+\end{equation}
+
+where K($\cdot$) is the kernel function in population and $h$ is the bandwidth. The random sample drawn from $f$ is denoted as $X_1, X_2, ..., X_n$ in here. Unfortunately, according to \cite{peng2004local}, the resulting estimators from these standard kernel estimation method have some drawbacks in our case where the support of the density function $f$ to be estimated is compact support.\\
+
+Bernstein polynomials is known as a very smooth estimator with acceptable behavior at the boundaries (\cite{leblanc2010bias}).
+
+As Bernstein (1912) defined, the Bernstein polynomial of order $m$ for a given function $u$ is
+\begin{equation}
+    B_{m,u}(x)= \displaystyle\sum_{k=0}^{m}u\left(\frac{k}{m}\right) \binom{m}{k} x^k(1-x)^{(m-k)}
+\end{equation}
+
+ if $u$ is continuous in the closed interval [0,1] the Bernstein polynomial $B_{m,u}(x)$ converges uniformly to $u(x)$ (\cite{bernstein1912demo})
+
+
+\begin{comment}
+
+
+When the underlying density $f$ is known to be continuous and compactly supported, following \cite{babu2002application}, the Bernstein estimator of $f$ of order $m > 0$ is
+
+\begin{equation}
+    \hat{f}_{m,n}(x) = m\displaystyle\sum_{k=0}^{m-1}\left[F_n\left(\frac{k+1}{m}\right)-F_n\left(\frac{k}{m}\right)\right] P_{k,m-1}(x)
+\end{equation}
+
+where $P_{k,m}(x) = \binom{m}{k} x^k(1-x)^{(m-k)}$ are binomial probabilities, as it is defined by \cite{babu2002application}. As \cite{vitale1975bernstein} stated the form of the Bernstein polynomial estimate of $f(x)$ is one of a linear combination of beta densities with random coefficients based on the observation.
+Note that $\hat{f}_{m,n}(x)$ is the derivative of $\hat{F}_{m,n}(x)$ with respect to x.
+Hence, the polynomial  of degree $m$ with coefficients depending on the data , $\hat{F}_{m,n}(x)$, is defined as
+
+\begin{equation}
+    \hat{F}_{m,n}(x) = \displaystyle\sum_{k=0}^{m}F_n\left(\frac{k}{m}\right) P_{k,m}(x)
+\end{equation}
+
+where $F_n$ denotes the empirical distribution function obtained from a random sample of size $n$. Hence, the Bernstein polynomial of order $m$ of $F$ is denoted as $B_m(x)$ :
+\begin{equation}
+B_m(x) = \displaystyle\sum_{k=0}^{m}F\left(\frac{k}{m}\right) P_{k,m}(x)
+\end{equation}
+
+It is clear to inspect $E[\hat{F}_{m,n}(x)] = B_m(x)$ for all $x \in [0,1]$ and all $n \geq  1$ . For all $k$, $F_{m,n}$ is non-decreasing and non-negative first derivative  in $x$ emanated from
+\begin{equation}
+F_{m,n}(0) = 0 = F(0) = B_m(0) \;\;and \;\; F_{m,n}(1) = 1 = F(1) = B_m(1)
+\end{equation}
+ the asymptotic properties of $\hat{F}_{m,n} $, $\hat{f}_{m,n}$, and other more details are examined in a paper by \cite{babu2002application}. \\ \\
+\end{comment}
+
+ In view of discussed properties of Bernstein polynomial, the Bernstein polynomial of order $m>0$ for the $f_s$ can be defined as
+
+\begin{equation} \label{eqn_bernstein polynomial_f_s}
+    B_m(s) = \displaystyle \sum_{k=0}^{m}f\left(\frac{k}{m}\right) P_{k,m}(s)
+\end{equation}
+where $P_{k,m}(x) = \binom{m}{k} x^k(1-x)^{(m-k)}$, for $k=0, ..., m$. The theorem presented by \cite{lorentz2013bernstein},  any continuous $f$ is defined on [0,1],
+
+\begin{equation} \label{theorem_lorentz}
+    \lim_{m \to +\infty} B_m(s) = f(s)
+\end{equation}
+As \cite{guan2016efficient} mentioned one of advantages of the Bernstein polynomial method is approximating any continuous function with compact support. These features of the Bernstein polynomial method allowed us to apply maximum Bernstein likelihood density estimation approach to the estimation of $\tau$ and the approximation of $f_s$.
+
+The approximation of $f_s$ was introduced by \cite{bertrand2019flexible} and used by \cite{guan2016efficient} which is integrated with a mixture of the beta distribution. The equation of the approximating $f_s$ is
+
+\begin{equation} \label{eqn_approximation of pdf }
+\begin{split}
+ \tilde f_{s,m}(s; \bar{\theta}_m) &= \displaystyle \sum_{k=0}^m f_s\left(\frac{k}{m}\right) p_{k,m}(s)\\
+ & =\displaystyle  \sum_{k=0}^m f_s\left(\frac{k}{m}\right) \binom{m}{k} s^k(1-s)^{(m-k)}\\
+ & = \displaystyle \sum_{k=0}^m \theta_{k,m}\binom{m}{k} s^k(1-s)^{(m-k)}\\
+ & = \displaystyle \sum_{k=0}^m f_s\left(\frac{k}{m}\right) \binom{m}{k}\frac{k! (m-k)!}{(m+1)!}  s^k(1-s)^{(m-k)}\\
+  & = \frac{1}{m+1}\displaystyle \sum_{k=0}^mf_s\left(\frac{k}{m}\right)s^k(1-s)^{(m-k)}
+\end{split}
+\end{equation}
+where $\bar{\theta} = (\theta_{0,m}, ..., \theta_{m,m})$ and $s\in [0,1]$. The approximation of $f_s$ is done by a mixture of $Beta(k+1, m-k+1)$ densities with known parameters. The probability density function of X ,  $f_x(\cdot; \alpha, \beta)$, from the equation (\ref{eqn_dist of X}) can be approximated by implementing the context of density estimation of equation (\ref{eqn_approximation of pdf }).
+
+\begin{equation}
+\begin{split}
+X & = \alpha S+ \beta \\
+S & = \frac{X-\beta}{\alpha}
+\end{split}
+\end{equation}
+The probability density function of X can be approximated with a $beta_{\alpha, \beta}(\cdot)$  which is probability density function of a Beta-distributed random variables based on the parameter $\alpha, \beta$ where $x\in [\beta, \alpha+\beta]$.
+\begin{equation}
+\begin{split}
+ \tilde f_{x,m}(x; \alpha, \beta, \bar{\theta}_m) &= \frac{1}{(\alpha+\beta)-\beta} \displaystyle \tilde f_{s,m}\left(\frac{X-\beta}{\alpha}; \bar \theta_m\right)\\
+ &= \frac{1}{\alpha} \displaystyle \sum_{k=0}^m \theta_{k,m}\binom{m}{k} \left(\frac{X-\beta}{\alpha}\right)^k\left(1-\left(\frac{X-\beta}{\alpha}\right)\right)^{(m-k)}\\
+ &= \frac{1}{\alpha} \displaystyle \sum_{k=0}^m \theta_{k,m} beta _{(k+1, m-k+1)}\left(\frac{X-\beta}{\alpha}\right)
+\end{split}
+\end{equation}
+The density of the classical measurement error model (\ref{eqn_measurement error}) can be approximated and applied on the equation (\ref{eqn_density of W}) based on the result of the approximated probability density function of X denoted as $\tilde f_{x,m}(x; \alpha, \beta, \bar{\theta}_m)$.
+
+\begin{equation} \label{eqn_approximation of W}
+\begin{split}
+\tilde f_{w,m}(w; \tau, \alpha, \beta, \bar \theta_m) & = \frac{1}{\tau}\int f_{x,m}(x; \alpha, \beta, \bar \theta_m) \phi \displaystyle\left(\frac{w-x}{\tau}\right) dx \\
+ 			& = \frac{1}{\tau}\displaystyle \int \left \{\frac{1}{\alpha} \sum_{k=0}^m \theta_{k,m} beta _{(k+1, m-k+1)}\left(\frac{x-\beta}{\alpha}\right)\right\}\phi \displaystyle\left(\frac{w-x}{\tau}\right) dx\\
+            &= \frac{1}{\alpha\tau} \displaystyle \sum_{k=0}^m \theta_{k,m} \int beta _{(k+1, m-k+1)}\left(\frac{x-\beta}{\alpha}\right)\phi \displaystyle\left(\frac{w-x}{\tau}\right) dx
+\end{split}
+\end{equation}
+
+The theorem \ref{theorem_lorentz} by \cite{lorentz2013bernstein} is also applied to $\tilde f_{w,m}(w; \tau, \alpha, \beta, \bar \theta_m)$  since $f_s$ is continuous. Hence, we apply the Bernstein log-likelihood fo the set of unknown parameters $ \tau, \alpha, \beta, \bar \theta_m$ in following sections.
+
+
+%----------------------------------------------------------------------------------------
+%	SUBSECTION
+%----------------------------------------------------------------------------------------
+\subsection{The Bernstein likelihood }
+
+
+The Bernstein likelihood was defined by \cite{guan2016efficient}, the maximiser the set of estimated parameters of log-likelihood is called MBLE. In this case, the Bernstein log-likelihood function of the set of parameters ($\tau, \alpha, \beta, \bar{\theta}$) given the observed data is
+
+\begin{equation}
+\begin{split}
+l_n(\tau, \alpha, \beta,\bar{\theta}_m) &=\sum_{i=1}^{n} log  f_{w,m}(w; \tau, \alpha, \beta, \bar \theta_m)\\
+&=\sum_{i=1}^{n} log \displaystyle \left[\frac{1}{\alpha\tau} \displaystyle \sum_{k=0}^m \theta_{k,m} \int beta _{(k+1, m-k+1)}\left(\frac{x-\beta}{\alpha}\right)\phi \displaystyle\left(\frac{W_i-x}{\tau}\right) dx \right].
+\end{split}
+\end{equation}
+where  a collection of sample of W are  independent and identically distributed, $W_1, W_2, ..., W_n \sim W $. Therefore, according to the \cite{guan2016efficient}, the maximizer $\hat{\tau},\hat{\alpha}, \hat{\beta}, \hat{\theta}$ of $l(\tau, \alpha, \beta,\bar{\theta_m})$ is called the MBLE of $ \tau,\alpha, \beta,\bar{\theta}_m$ and the MBLEs $\hat{f}_w(w)$ = $f_w(w; \hat{\tau}_m,\hat{\alpha}_m, \hat{\beta}_m, \hat{\theta}_m)$  and $\hat{F}_w(w) = F_w(w; \hat{\tau}_m,\hat{\alpha}_m, \hat{\beta}_m, \hat{\theta}_m )$  of $f(w)$ and $F(w)$ are called \enquote{the Bernstein probability density function} and \enquote{the Bernstein cumulative distribution function} respectively.
+
+\subsubsection{Estimation of ROC curve by using Maximum Bernstein likelihood density estimation }
+
+In this section we present the Maximum Bernstein likelihood density estimation procedure for ROC curve in presence of measurement error given in equation \ref{eqn_roc curve} above. As we supposed that diagnostic test results $x^1_1, x^1_2, ... x^1_m$ and $x^0_1, x^0_2, ..., x^0_n$  denoted as $X_1$ and $X_0$ are from the diseased and non-diseased population having cumulative distribution function $F_1$ and $F_0$ respectively.
+
+The proposed refining nonparametric approach is to provide a smooth ROC curve in  following presence of measurement error using mixture of flexible approximate parametric estimation with Bernstein type polynomials. Hence, the proposed nonparametric estimation method for the ROC curve involves replacing $F_1$ and $F_0$ by their distribution functions $\hat{F_1}_{m}(s_1)$ and $\hat{F_0}_{n}(s_0)$, respectively, by estimating the $\bar{\theta}$ parameters via maximum Bernstein likelihood due to the presence of the measurement error in the estimator of $F$.
+
+As \cite{lorentz2013bernstein} discussed in the equation (\ref{theorem_lorentz}) that $f$ can be approximated with the same rate as $B_m^kf(s)$ by a Bernstein type polynomial of the form $f_s(x;\theta_m) = \sum_{k=0}^{m}\theta_{k,m}P_{k,m}(s)$ , where $\bar{\theta}_m= (\theta_{0,m}, \theta_{1,m}, ..., \theta_{m,m})^T$, and its positive, which is called \enquote{a polynomial with positive coefficients in the literature of polynomial approximation} in the paper of \cite{guan2016efficient}. Therefore, in this context, density $f_{s1}$ and $f_{s0}$ can be approximately modeled and parameterised by $f_{s_1,m}(s_1; \bar{\theta_1}_m)$ and $f_{s0, n}(s_0; \bar{\theta_0}_n)$  respectively as a mixture of the beta distribution and estimate the $\bar{\theta}_m$ parameters via the maximum likelihood method.
+
+\begin{comment}
+As we chose Bernstein polynomial method and estimate the probability density function (PDF) $f_1(x) =F'_1(x)$ by the Bernstein estimator of $f$ of order $m > 0$ and $F_E$ denotes the empirical distribution function.
+
+\begin{equation}
+    \hat{f_1}_{m}(x) = \frac{d}{dx} \hat{F_1}_{m}=
+    m\displaystyle\sum_{k=0}^{m-1}\left[F_{1 E }\left(\frac{k+1}{m}\right)-F_{1E }\left(\frac{k}{m}\right)\right] P_{k,m-1}(x)
+\end{equation}
+
+where $P_{k,m}(x) = \binom{m}{k} x^k(1-x)^{(m-k)}$ are binomial probabilities, and $F_E$ denotes as the empirical distribution function obtained. The integration of the estimator of $\hat{f_1}$ is
+
+
+\begin{equation}
+\hat{F_1}_{m,l}(x) = \int \hat{f_1}_{ m}(x) dx
+\end{equation}
+
+and $\hat{F_0}_{n}(x)$ is obtained similarly as  $\hat{F_1}_{m}(x)$ with $n$ of the Bernstein polynomial degree.
+
+
+
+\begin{equation}
+    \hat{f_0}_{n}(x) = \frac{d}{dx} \hat{F_0}_{n}=
+    n\displaystyle\sum_{k=0}^{n-1}\theta_{k,n}\left[F_{0 E }\left(\frac{k+1}{n}\right)-F_{0E }\left(\frac{k}{n}\right)\right] P_{k,n-1}(x)
+\end{equation}
+
+$F_{0E}$ denotes as the empirical distribution of $F_0$  obtained. The integration of the estimator of $\hat{f_1}$ is
+
+
+\begin{equation}
+\hat{F_0}_{n}(x) = \int \hat{f_0}_{n}(x) dx
+\end{equation}
+
+\end{comment}
+
+
+\begin{equation}
+\begin{split}
+\hat{f_1}(x;\bar{\theta_1}_m) & = \sum_{k=0}^{m}\theta_{k,m}P_{k,m}(x) \\
+&= P_{0,m}+\bar{\theta}_m\bar{P}_m(x)
+\end{split}
+\end{equation}
+
+where $\bar{\theta}_m = (\theta_{1,m}, ..., \theta_{m,m})^T$,  $\bar{P}_m = (P_{1,m}-P_{0,m}, ..., P_{m,m}-P_{0,m})^T$, and $P_{0,m}=\frac{1}{m+1}$ . Clearly, $F_1(x) = \int f_1(x)dx   $ is corresponding continuous cumulative density function.  The $F_1$ also can be obtained approximately as
+
+\begin{equation}
+\begin{split}
+   \hat{F_1}(x;\bar{\theta_1}_m) &= \sum_{k=0}^{m}\theta_{k,m}\int_0^x P_{k,m}(u)du \\
+\end{split}
+\end{equation}
+similarly, $\tilde{f_0}(x)$ and $\tilde{F_0}(x)$ can obtained similarly with a polynomial with $n$ positive coefficients $\bar{\theta_0}_n$. After obtaining the estimated $\hat{F_1}$ and $\hat{F_0}$ respectively, $\hat{F_0}^{-1}$ can be acquired by doing inverse of $\hat{F}_0$. Eventually, the ROC curve can be estimated by plugging in the estimated $\hat{F_1}, \hat{F_0}^{-1}$ into the equation (3). \\
+
+Each probability density function of $X_1 $ and  $X_0$  can be approximated with a $beta_{\alpha, \beta}(\cdot)$ which is probability density function of a beta-distributed random variables based on the parameters $ \alpha_1, \beta_1$  and $ \alpha_0, \beta_0$ respectively from the assumption equation (\ref{eqn_dist of X}). Hence, the equations of the the approximated probability density function of $X_1$ and $X_0$ denoted as $\tilde {f_1}_{ x,m}(x_1; \alpha_1, \beta_1, \bar{\theta_1}_{m})$  and $\tilde {f_0}_{ x,n}(x_0; \alpha_0, \beta_0, \bar{\theta_0}_{n})$ respectively are
+
+\begin{equation}
+\begin{split}
+  {f_1}_{x,m}(x; \alpha_1, \beta_1, \bar{\theta}_{1m}) &= \frac{1}{(\alpha_1+\beta_1)-\beta_1} \displaystyle \tilde f_{s_1,m}\left(\frac{X_1-\beta_1}{\alpha_1}; \bar{\theta_1}_{m}\right)\\
+ &= \frac{1}{\alpha_1} \displaystyle \sum_{k=0}^m \theta_{k,m} beta _{(k+1, m-k+1)}\left(\frac{X_1-\beta_1}{\alpha_1}\right)
+\end{split}
+\end{equation}
+
+As \cite{lorentz2013bernstein} stated since both of each $f_{s1}$ and $f_{s2}$  are continuous, the theorem \ref{theorem_lorentz} applied to the approximated density of $f_{w_1,m}(w_1, \tau_1, \alpha_1, \beta_1, \bar{\theta_1}_{m})$
+
+\begin{equation} \label{eqn_approximation of W}
+\begin{split}
+\tilde f_{w_1,m}(w_1; \tau_1, \alpha_1, \beta_1, \bar \theta_{1m}) & = \frac{1}{\tau_1}\int f_{x_{(1)},m}(x_{(1)}; \alpha_1, \beta_1, \bar \theta_{1m} \phi \displaystyle\left(\frac{w_1-x_1}{\tau_1}\right) dx_1 \\
+ 			& = \frac{1}{\tau_1}\displaystyle \int \left \{\frac{1}{\alpha_1} \sum_{k=0}^m \theta_{k,m} beta _{(k+1, m-k+1)}\left(\frac{x_1-\beta_1}{\alpha_1}\right)\right\}\phi \displaystyle\left(\frac{w_1-x_1}{\tau_1}\right) dx_1\\
+            &= \frac{1}{\alpha_1\tau_1} \displaystyle \sum_{k=0}^m \theta_{k,m} \int beta _{(k+1, m-k+1)}\left(\frac{x_1-\beta_1}{\alpha_1}\right)\phi \displaystyle\left(\frac{w_1-x_1}{\tau_1}\right) dx_1
+\end{split}
+\end{equation}
+
+which results similarly to $f_{w_0,n}(w_0, \tau_0, \alpha_0, \beta_0, \bar{\theta_0}_{n})$. Finally, the Bernstein log-likelihood function as defined as \cite{guan2016efficient} of the set of parameters, $(\tau_1, \alpha_1, \beta_1, \bar{\theta_1}_{m})$ given the observed data is
+\begin{equation}
+\begin{split}
+l_p(\tau_1, \alpha_1, \beta_1,\bar{\theta_1}_m) &=\sum_{i=1}^{n} log  f_{w_1,m}(w_1; \tau_1, \alpha_1, \beta_1, \bar \theta_{1m})\\
+&=\sum_{i=1}^{n} log \displaystyle \left[\frac{1}{\alpha_1\tau_1} \displaystyle \sum_{k=0}^m \theta_{k,m} \int beta _{(k+1, m-k+1)}\left(\frac{x_1-\beta_1}{\alpha_1}\right)\phi \displaystyle\left(\frac{W_{1i}-x_1}{\tau_1}\right) dx_1 \right].
+\end{split}
+\end{equation}
+where a collection of sample of $W_1$ are independent and identically distributed, $W_{11}, W_{12}\\, W_{13},..., W_{1p}\sim W_1$. Besides, it applies to the Bernstein log-likelihood function of the set of parameters, $(\tau_0, \alpha_0, \beta_0, \bar{\theta_0}_{m})$  denoted as $l_q(\tau_0, \alpha_0, \beta_0, \bar{\theta_0}_{n})$  similarly where $W_0$ is a collection of sample with i.i.d , $W_{01}, W_{02}, W_{03},..., W_{0q}\sim W_0$.
+
+The degree of the Bernstein polynomial,  $m,n$ , for each distribution is crucial to determine the optimal value because it determines model of the Bernstein polynomial. But, as we mentioned as an advantage of the maximum Bernstein likelihood density estimation is only one regularization parameter for each density to choose. Such as the choice of optimal bandwidth and kernel function is difficult, even the selecting tuning parameters of the Bayesian approach is more complicated. In this case, the Bernstein polynomial model is only determined by the each positive integer $m,n$.
+
+The choice of the each optimal value, $m,n$, is mostly based on the result of the simulation. \cite{guan2016efficient} used EM algorithm for finding the maximum likelihood estimates $(\hat{\tau}_m,\hat{\alpha}_m, \hat{\beta}_m, \hat{\theta}_m)$ of $(\tau_1,\alpha_1,\beta_1,\bar{\theta_1}_m)$ and $(\hat{\tau}_n,\hat{\alpha}_n, \hat{\beta}_n, \hat{\theta}_n)$ of $(\tau_0,\alpha_0,\beta_0,\bar{\theta_0}_n)$  by using information criterion AIC/BIC which was created to find an appropriate penalty term.

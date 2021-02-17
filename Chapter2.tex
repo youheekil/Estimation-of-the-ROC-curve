@@ -1,0 +1,63 @@
+% Chapter 1
+
+\chapter{Basic Methods} % Main chapter title
+
+\label{Chapter2} % For referencing the chapter elsewhere, use \ref{Chapter1}
+%% =================================================
+%% Section 1. Measurement Error
+%% =================================================
+
+
+\section{Measurement Error}
+
+
+As we have discussed, there is increasing awareness that measurement error must take into account for accurate statistical analysis especially for epidemiological data. The measurement error can occur for many reasons, in this paper, classical measurement error will be focused. Historically, there are two major defining characteristics of the taxonomy of measurement error.  The true (unobserved) values for covariate are denoted as $X$. The error subject to values are denoted as $U$, and its mean-zero which could be homoscedastic or heteroscedastic. Therefore, the classical measurement error model is :
+
+\begin{equation} \label{eqn_measurement error}
+W = X + U
+\end{equation}
+where W is the observed (mis-measured) covariate, besides, X and U are assumed to be independent to each other. We further assume that the classical measurement error model with a Gaussian error of unknown variance $\tau^2$, so that $U \sim N(0, \tau^2)$.
+
+
+%% =================================================
+%% Section 2 ROC
+%% =================================================
+\section{Receiver Operating Characteristics (ROC) curve}
+
+\par \quad The ROC is needed in order to provide an assessment of the classifier over the whole range of $t$ values of the threshold in a particular classification rule rather at just a single chosen one. The ROC must lie within the border of [(0,0), (0,1)] and [(0,1), (1,1)]. Therefore, in practice, the ROC curve will be a continuous curve lying in the upper triangle of the graph such as between two extremes points of the graph (\cite{krzanowski2009roc}).
+
+
+Let test variable X denotes the continuous scores,  $F_1$ and $F_0$ be distribution functions of X for the diseased group ($1$) and non-diseased group ($0$) (\cite{faraggi2000effect}). For the cut point (threshold value) $t$, Sensitivity/true positive rate denoted as $SE(t) = P(X>t| group = diseased{(1)}) =1-F_1(t)$ while specificity$(s)$ is denoted as $SP(t) = P(X<t|group = nondiseased{(0)}) = F_0(t)$, and false positive rate is denoted as $1-SP(t)$. The ROC curve is a plot of the sensitivity against 1-specificity $(1-s)$, in other words, of the true positive fraction (TPF) against false positive fraction (FPF) using a threshold t. The equation of the ROC curve is
+
+
+
+\begin{equation}
+\begin{split} \label{eqn_roc curve}
+  ROC(\cdot) = {(FPF(t), TPF(t)) \;\;\; \;\;\;  t\in (-\inf, \inf)}\\
+  ROC(s) = 1 - F_1[F_0^{-1}(1-s)] \;\;\; \;\;\;  (0 \leq s \leq 1)
+\end{split}
+\end{equation}
+
+
+The most common approach to estimate the ROC Curve is empirical approach where the data modeled samples from the relevant population without assumptions (\cite{krzanowski2009roc}). Then the ROC curve is estimated based on the data sampled from the true positive rates ($SE(t) = 1-F_1(t)$), specificity($SP(t) = F_0(t)$), however, the result empirical ROC estimator is jagged in appearance than underlying continuous form and not accurate enough for the smaller sample sizes. In this paper, we introduce one of nonparametric approaches to estimate the ROC curve in presence of measurement errors with Bernstein type polynomials. This approach is built on the work of \cite{schwarz2010consistent}, \cite{bertrand2019flexible}, and \cite{guan2016efficient}. We firstly review several results on Bernstein distribution function estimators and measurement error, then present the precise definition of the maximum Bernstein likelihood density estimation of the measurement error of the ROC curve. Asymptotic properties and weak convergence of the Bernstein polynomial estimator was studied by the following studies.\cite{babu2002application} implemented Bernstein polynomial estimation to the univariate distribution and density function, later \cite{leblanc2010bias} showed the Bernstein estimator outperforms the classical empirical distribution regarding the asymptotic variance by proving point-wise asymptotic normality. \cite{guan2016efficient} proposed maximum Bernstein likelihood density estimation method. This Bernstein polynomial method relying on only one regularization parameter which is advantageous, it was possible because it is the same as using a mixture of Beta density function with known parameters. Besides, it approximates any continuous function with compact support. \cite{guan2016efficient} mentioned a flexible approximate parametric estimation is favoured over nonparametric estimation due to a lower rate of convergence to the true density function. The semi-nonparametric or mixture function density methods are not be able to used for here because of the compact support property of the ROC curve. A likelihood-based approach for estimating error variance was derived by \cite{schwarz2010consistent} with only weak assumption. The work of \cite{guan2016efficient}
+and \cite{schwarz2010consistent} carried out the study of \cite{bertrand2019flexible} about flexible parametric approach to classical measurement error variance estimation when Auxiliary data is not available.
+
+In this paper, we consider the classical measurement error model with a Gaussian error of unknown variance $\tau^2$, $U\sim N(0, \tau^2)$, from equation \ref{eqn_measurement error} where X is only assumed to be continuous and to have compact support. The objective is to obtain an estimate of $\tau$ which will then be available for use in a bias-correction method. Therefore, the key idea of this is to build the probability density function of W with only weak assumptions on the distribution of X. Therefore, we can assume that
+
+\begin{gather} \label{eqn_dist of X}
+X = \alpha S+\beta
+\end{gather}
+
+where $\alpha$ and $\beta$ are two unknown constants with $\alpha>0$ for identifiability reasons, and $S$ is a continuous random variable taking values in $[0,1]$. Let $f_X, f_S, f_U$ and $f_W$ be the density functions of X, S, U, and W, respectively, under the addictive measurement error model( \ref{eqn_measurement error}), besides, value of $X$ are in $[\beta, \alpha+\beta]$ according to the equation of ( \ref{eqn_dist of X}). The classical additive measurement error model( \ref{eqn_measurement error} ) with normally distributed error is $\displaystyle\frac{1}{\tau}\phi\left(\frac{w-x}{\tau}\right)$ where $\phi(\cdot)$ is  a normal distribution with zero mean and unit variance. \cite{carroll2006measurement} noted that the density function $f_W$ is the convolution of $f_X$ and $f_U$.
+
+
+\begin{equation} \label{eqn_density of W}
+\begin{split}
+ f_W(w) & = \frac{1}{\tau}\int_{x=\beta}^{\alpha+\beta} f_X(x) \phi \displaystyle\left(\frac{w-x}{\tau}\right) dx \\
+ 			& = \frac{1}{\tau}\int_{x=\beta}^{\alpha+\beta} f_S (u)\phi\left(\frac{w-x}{\tau}\right) du  \;\;\;\;\; \;\;\;\;\;  where \; u = \frac{x-\beta}{\alpha},  du=\frac{1}{\alpha}dx\\
+ 			& = \frac{1}{\alpha\tau} \int_{x=\beta}^{\alpha+\beta} f_S\displaystyle\left(\frac{x-\beta}{\alpha}\right)\phi\left(\frac{w-x}{\tau}\right) dx
+\end{split}
+\end{equation}
+
+
+where the probability density function of S is denoted as $f_s$  which is specified with minimal assumption.

@@ -1,0 +1,59 @@
+% Chapter 1
+
+\chapter{Introduction} % Main chapter title
+
+\label{Chapter1} % For referencing the chapter elsewhere, use \ref{Chapter1}
+
+%----------------------------------------------------------------------------------------
+
+% Define some commands to keep the formatting separated from the content
+\newcommand{\keyword}[1]{\textbf{#1}}
+\newcommand{\tabhead}[1]{\textbf{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\file}[1]{\texttt{\bfseries#1}}
+\newcommand{\option}[1]{\texttt{\itshape#1}}
+
+%----------------------------------------------------------------------------------------
+
+\section{Preliminary Considerations}
+
+The problem of estimation receiver operating characteristic (ROC) curves in the presence of measurement errors is concerned. A ROC curve enunciates the probability of a true positive (PTP) as a function of the probability of a false positive (PFP) for all possible values of the cut-off between cases and controls. The area under the curve (AUC), $\theta$, can measure globally how well the separator variable distinguishes between cases and control. Therefore, AUC, $\theta$, is widely used as a summary measure of diagnostic accuracy. We propose a smooth non-parametric ROC curve derived from Bernstein type polynomial estimates to obtain the ROC curve and AUC. The features of the Bernstein type polynomials can take the noted drawbacks of non-parametric ROC curve in hands. The aim of the paper is the estimation of the ROC curve and the AUC when predictors are measured with error. The classical measurement error is one of the most commonly used measurement error where the observed variables are measured with an additive error. The classical measurement error model states that
+$
+    W_{ij} = X_i + U_{ij}
+$
+where $W_{ij}$ is an unbiased measure of $X_i$, and $U_{ij}$ is mean-zero error which could be homoscedastic or heteroscedatic. For example, in context of disease study, this model can be interpreted as the observed dose ($W_{ij}$) equals the true dose ($X_i$) plus classical measurement error ($U_{ij}$). \cite{carroll2006measurement} indicated the effects of measurement error in covariates causes biases. There are many statistical methods aimed to correct for biases of estimation caused by measurement error.  As pointed out by \cite{coffin1997receiver}, if the separator is measured with error, then the usual non-parametric estimate is also biased as well. As \cite{carroll2006measurement} states not taking account the measurement error will lead to serious consequences such as bias in the estimators of ROC curves and AUC in non-parametric cases and even in parametric cases. Hence, the measurement error has to be considered in order to derive well grounded inference by some bias-correct methods. The exact error distribution is frequently required for those bias-correct methods, however, as \cite{bertrand2019flexible} mentioned it is almost impossible to carry out the exact error distribution (variance of measurement error) when neither validation nor auxiliary data are available due to complexity.
+
+%----------------------------------------------------------------------------------------
+\section{Literature Reviews}
+There are many literatures dealing of the effect of random measurment error on ROC curves and AUC.
+
+\begin{itemize}
+  \item \cite{faraggi2000effect} studied confidence interval for the the effect of random measurement error on ROC curves and AUC with assumption of parametric normal model. Two different cases, with the effect of ignoring the measurement error on the cofidence interval for the area and  Illustrations are performed
+\end{itemize}
+
+
+
+%----------------------------------------------------------------------------------------
+\section{Objectives}
+%----------------------------------------------------------------------------------------
+
+\section{Organization}
+
+Therefore, in this paper, we proposed one of the nonparametric methods for the estimation of the ROC curve and AUC with the measurement error variance by a Bernstein type polynomial.
+
+The paper will be arranged as follows. In \textbf{Chapter 2}, we described basic knowledge about measurement error and ROC curves. In \textbf{Chapter 3}, the Bernstein likelihood with mixture of beta distribution approach is presented as a way of obtaining the maximum Bernstein likelihood estimates of ROC curve in presence of measurement error. Moreover, a method of choosing the ideal Bernstein polynomial model degree ($m$) based on the results of simulation is presented. The results of the estimation of the density AUC found on the estimated  ROC curve with measurement errors are reported in \textbf{Chapter 4}. In
+\textbf{Chapter 5}, a comparison of the efficiency of the proposed maximum Bernstein likelihood ROC estimators with other nonparametric ROC estimators with SIMEX algorithm is performed. The proposed methods on estimation of ROC curve in presence of measurement error are applied to a real data set in \textbf{Chapter 6}.
+
+\keyword{Chapters}
+\begin{itemize}
+\item Chapter 1: Introduction to the thesis topic
+\item Chapter 2: Background information and theory
+\item Chapter 3: (Laboratory) experimental setup
+\item Chapter 4: Details of experiment 1
+\item Chapter 5: Details of experiment 2
+\item Chapter 6: Discussion of the experimental results
+\item Chapter 7: Conclusion and future directions
+\end{itemize}
+This chapter layout is specialised for the experimental sciences, your discipline may be different.
+
+\keyword{Figures} -- this folder contains all figures for the thesis. These are the final images that will go into the thesis document.
